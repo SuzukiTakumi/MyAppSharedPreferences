@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">MyApplicationSharedPreferences</string>
+    <string name="app_name">CountUp</string>
+    <string name="button_name">COUNT UP</string>
 </resources>

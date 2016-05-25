@@ -10,45 +10,28 @@
     android:padding="40dp"
     android:orientation="vertical"
     android:layout_gravity="center_horizontal"
-    tools:context="com.example.admin.myapplicationsharedpreferences.MainActivity">
+    tools:context="com.example.admin.myapplicationsharedpreferences.MainActivity"
+    android:weightSum="1">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_text"
-        android:textSize="30sp"
-        android:layout_margin="20dp"
-        android:textColor="#000000" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_write"
-        android:text="Write"
-        android:layout_gravity="center_horizontal"
-        android:onClick="writeText" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textview_write"
-        android:textSize="40sp"
-        android:layout_margin="20dp"
-        android:textColor="#3353e0" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="50dp"
+        android:textAlignment="center"
+        android:textSize="120sp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_read"
-        android:text="Read"
-        android:layout_gravity="center_horizontal"
-        android:onClick="readText" />
-
-    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textview_read"
-        android:textSize="40sp"
-        android:layout_margin="20dp"
-        android:textColor="#fa0418" />
+        android:layout_height="match_parent"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal"
+        android:onClick="countUp"
+        android:text="@string/button_name"
+        android:background="#6f95ee"
+        android:textColor="#9ff415"
+        android:textSize="50sp" />
 </LinearLayout>

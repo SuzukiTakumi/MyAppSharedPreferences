@@ -1,59 +1,37 @@
 package com.example.admin.myapplicationsharedpreferences;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences dataStore;
-    private EditText editText;
-    private TextView textViewWrite, textViewRead;
-    private Button buttonWrite, buttonRead;
-
+    private TextView countTextView;
+    private int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        dataStore = getSharedPreferences("dataStore", MODE_PRIVATE);
+        count = dataStore.getInt("count", 0);
 
-        dataStore = getSharedPreferences("DataStore", MODE_PRIVATE);
-        editText = (EditText) findViewById(R.id.edit_text);
-        textViewWrite = (TextView) findViewById(R.id.textview_write);
-        textViewRead = (TextView) findViewById(R.id.textview_read);
-        buttonWrite = (Button) findViewById(R.id.button_write);
-        buttonWrite.setOnClickListener(this);
-        buttonRead = (Button) findViewById(R.id.button_read);
-        buttonRead.setOnClickListener(this);
+        countTextView = (TextView)findViewById(R.id.textView);
+        countTextView.setText(String.valueOf(count));
     }
 
-    public void writeText(View view){
-        String text = editText.getText().toString();
-        textViewWrite.setText(text);
-
+    public void countUp(View view){
+        count++;
+        countTextView.setText(String.valueOf(count));
         SharedPreferences.Editor editor = dataStore.edit();
-        editor.putString("input", text);
-        editor.commit();
-
-    }
-
-    public void readText(View view){
-        String text = dataStore.getString("input", "Nothing");
-        if(!text.equals("Nothing")){
-            textViewRead.setText(text);
-        }
-    }
-
-    @Override
-    public void onClick(View view) {
-        if(view == buttonWrite){
-            writeText(view);
-        }else if(view == buttonRead){
-            readText(view);
-        }
+        editor.putInt("count", count);
+        editor.apply();
     }
 }
